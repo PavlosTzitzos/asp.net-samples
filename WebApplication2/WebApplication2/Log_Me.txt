@@ -1,0 +1,6 @@
+﻿
+Following the guide here : https://learn.microsoft.com/en-us/aspnet/mvc/overview/getting-started/introduction/examining-the-details-and-delete-methods
+
+this project did not achieved the migrations successfully
+
+

@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "Products1";
+    var dataFile = Server.MapPath("~/App_Data/intro_tutorials.txt");
+    Array userData = File.ReadAllLines(dataFile);
+}
+<main aria-labelledby="title">
+    <h2 id="title">@ViewBag.Title.</h2>
+    <h3>Product 1</h3>
+
+    <p>Use this area to provide additional information.Time : @DateTime.Now</p>
+
+    <h3>Product 2</h3>
+
+    <p>Use this area to provide additional information.UTC Time:  @DateTime.UtcNow</p>
+
+    <h3>Product 3</h3>
+
+    <p>Use this area to provide additional information. </p>
+    <!-- Single statement block -->
+    @{ var myMessage = "Hello World"; }
+
+    <!-- Inline expression or variable -->
+    <p>The value of myMessage is: @myMessage</p>
+
+    <!-- Multi-statement block -->
+    @{
+        var greeting = "Welcome to our site!";
+        var weekDay = DateTime.Now.DayOfWeek;
+        var greetingMessage = greeting + " Today is: " + weekDay;
+    }
+    <p>The greeting is: @greetingMessage</p>
+
+    @{
+        if (IsPost)
+        {
+            string companyname = Request["CompanyName"];
+            string contactname = Request["ContactName"];
+            <p>
+                You entered: <br />
+                Company Name: @companyname <br />
+                Contact Name: @contactname
+            </p>
+        }
+        else
+        {
+            <form method="post" action="">
+                Company Name:<br />
+                <input type="text" name="CompanyName" value="" /><br />
+                Contact Name:<br />
+                <input type="text" name="ContactName" value="" /><br /><br />
+                <input type="submit" value="Submit" class="submit" />
+            </form>
+        }
+    }
+    <p>Next is data from a txt file.</p>
+    @foreach (string dataLine in userData)
+    {
+        foreach (string dataItem in dataLine.Split(','))
+        {@dataItem <text>&nbsp;</text>}
+    <br />
+    }
+
+</main>

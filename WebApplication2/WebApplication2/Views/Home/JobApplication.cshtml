@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "JobApplication";
+}
+<main aria-labelledby="title">
+    <h2 id="title">@ViewBag.Title.</h2>
+    <h3>@ViewBag.Message</h3>
+
+    <p>Use this area to provide additional information.</p>
+    
+    <p>Please fill the form:</p>
+    
+    <form name="JobApplication">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="someone@example.com" aria-describedby="emailHelp" required="1">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <select class="form-select" aria-label="Default select example">
+            <option selected>Choose how many kids</option>
+            <option value="1">One kid</option>
+            <option value="2">2 kids</option>
+            <option value="3">3 kids</option>
+            <option value="4">more than 3</option>
+        </select>
+        <div class="mb-3">
+            <label for="exampleInputFirstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="exampleInputFirstName" placeholder="Pavlos" aria-describedby="nameHelp" required="1">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputLastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="exampleInputLastName" placeholder="Tzitzos" aria-describedby="nameHelp" required="1">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" name="exampleInputPassword1" id="exampleInputPassword1" onblur="checkPassword()" required="1">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword2" class="form-label">Re-type Password</label>
+            <input type="password" class="form-control" name="exampleInputPassword2" id="exampleInputPassword2" onblur="checkPassword()" required="1">
+        </div>
+        <div class="mb-3">
+            <label for="formFileMultiple" class="form-label">Upload the prescription</label>
+            <input class="form-control" type="file" id="formFileMultiple" multiple>
+        </div>
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1" required="1">
+            <label class="form-check-label" for="exampleCheck1" onclick="checkPassword()">Agree to terms</label>
+        </div>
+        <button type="submit" class="btn btn-primary" onclick="/SubmitSuccessful"> submit</button>
+        <span role="alert" id="nameError" aria-hidden="true">
+            Passwords do not match!
+        </span>
+    </form>
+</main>

@@ -1,0 +1,69 @@
+Error at Friday 14/07/2023
+
+There was an error : 
+
+about System.Diagnostics.DiagnosticSource
+
+Exception from HRESULT: 0x80131040
+
+The issue was solved after going to :
+
+Project > Manage NuGet Packages > Installed > System.Diagnostics.DiagnosticSource
+
+And checked the current version ( 7.0.2 latest stable )
+
+Changing to the error's version ( 4.0.2 )
+the NuGet console displayed : 
+
+latest supported by another package was : 4.4.0
+
+So I changed the version to 4.4.0 . It worked. 
+
+And Above this version the same error was displayed.
+
+
+The error :
+------------
+
+Server Error in '/' Application.
+Could not load file or assembly 'System.Diagnostics.DiagnosticSource, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51' or one of its dependencies. The located assembly's manifest definition does not match the assembly reference. (Exception from HRESULT: 0x80131040)
+Description: An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+Exception Details: System.IO.FileLoadException: Could not load file or assembly 'System.Diagnostics.DiagnosticSource, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51' or one of its dependencies. The located assembly's manifest definition does not match the assembly reference. (Exception from HRESULT: 0x80131040)
+
+Source Error:
+
+An unhandled exception was generated during the execution of the current web request. Information regarding the origin and location of the exception can be identified using the exception stack trace below.
+
+Assembly Load Trace: The following information can be helpful to determine why the assembly 'System.Diagnostics.DiagnosticSource, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51' could not be loaded.
+
+
+=== Pre-bind state information ===
+LOG: DisplayName = System.Diagnostics.DiagnosticSource, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51
+ (Fully-specified)
+LOG: Appbase = file:///C:/Users/admin/source/repos/sdop_p/sdop/
+LOG: Initial PrivatePath = C:\Users\admin\source\repos\sdop_p\sdop\bin
+Calling assembly : Microsoft.AspNet.TelemetryCorrelation, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35.
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: C:\Users\admin\source\repos\sdop_p\sdop\web.config
+LOG: Using host configuration file: C:\Users\admin\Documents\IISExpress\config\aspnet.config
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework64\v4.0.30319\config\machine.config.
+LOG: Post-policy reference: System.Diagnostics.DiagnosticSource, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51
+LOG: Attempting download of new URL file:///C:/Users/admin/AppData/Local/Temp/Temporary ASP.NET Files/vs/1c82a19f/b7a9395a/System.Diagnostics.DiagnosticSource.DLL.
+LOG: Attempting download of new URL file:///C:/Users/admin/AppData/Local/Temp/Temporary ASP.NET Files/vs/1c82a19f/b7a9395a/System.Diagnostics.DiagnosticSource/System.Diagnostics.DiagnosticSource.DLL.
+LOG: Attempting download of new URL file:///C:/Users/admin/source/repos/sdop_p/sdop/bin/System.Diagnostics.DiagnosticSource.DLL.
+WRN: Comparing the assembly name resulted in the mismatch: Build Number
+ERR: Failed to complete setup of assembly (hr = 0x80131040). Probing terminated.
+
+Stack Trace:
+
+
+[FileLoadException: Could not load file or assembly 'System.Diagnostics.DiagnosticSource, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51' or one of its dependencies. The located assembly's manifest definition does not match the assembly reference. (Exception from HRESULT: 0x80131040)]
+   Microsoft.AspNet.TelemetryCorrelation.TelemetryCorrelationHttpModule.Application_BeginRequest(Object sender, EventArgs e) +0
+   System.Web.SyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute() +218
+   System.Web.<>c__DisplayClass285_0.<ExecuteStepImpl>b__0() +36
+   System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step) +121
+   System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously) +94
+
+Version Information: Microsoft .NET Framework Version:4.0.30319; ASP.NET Version:4.8.9032.0

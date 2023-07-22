@@ -42,9 +42,13 @@ Tutorial and sources list:
 
 [Razor Pages w3school reference](https://www.w3schools.com/ASp/razor_intro.asp)
 
+[Razor Pages - Partial Pages](https://www.learnrazorpages.com/razor-pages/partial-pages)
+
 [ASP.NET](https://dotnet.microsoft.com/en-us/apps/aspnet)
 
 [ASP.NET Web Forms](https://learn.microsoft.com/en-us/aspnet/web-forms/overview/getting-started/code-editing-in-web-forms-pages)
+
+[ASP.NET Web API tutorial](https://www.tutorialsteacher.com/webapi)
 
 [What is CRUD ?](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete)
 

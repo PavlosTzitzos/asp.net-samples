@@ -194,6 +194,10 @@ Other :
 
 [Understanding AD DS Design | Microsoft Learn](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/plan/understanding-ad-ds-design)
 
+[DOT NET TUTORIALS (good one)](https://dotnettutorials.net/course/asp-net-web-api/)
+
+[ASP.NET Web API tutorial (less good)](https://www.tutorialsteacher.com/webapi)
+
 About Software Architectures:
 
 [General - IBM](https://www.ibm.com/cloud/blog/four-architecture-choices-for-application-development)

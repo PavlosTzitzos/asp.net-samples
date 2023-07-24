@@ -193,3 +193,19 @@ Other :
 [Claim Class (System.Security.Claims) | Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/api/system.security.claims.claim?view=net-7.0)
 
 [Understanding AD DS Design | Microsoft Learn](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/plan/understanding-ad-ds-design)
+
+About Software Architectures:
+
+[General - IBM](https://www.ibm.com/cloud/blog/four-architecture-choices-for-application-development)
+
+[3 Tier Architecture](https://www.codeproject.com/articles/36847/three-layer-architecture-in-c-net-2)
+
+[Microsoft Web Application Architectures](https://learn.microsoft.com/en-us/dotnet/architecture/modern-web-apps-azure/common-web-application-architectures)
+
+[BLL intro](https://www.geeksforgeeks.org/business-logic-layer/)
+
+[Example uses of BLL](https://www.integrify.com/what-is-business-logic/)
+
+[Extention](https://blogs.mulesoft.com/dev-guides/how-to-tutorials/modeling-your-business-logic-bpm-rules-and-cep-part-1/)
+
+

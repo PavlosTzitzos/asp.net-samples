@@ -1,5 +1,7 @@
 # ASP.NET Samples
 
+[Reading / Understanding code of big projects](https://stackoverflow.com/questions/2872345/how-to-understand-existing-projects)
+
 Project List :
 
 MVC_example

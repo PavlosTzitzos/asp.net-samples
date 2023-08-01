@@ -4,6 +4,9 @@
 
 Project List :
 
+FileUp (using chatgpt only)
+FileUploadwithModelandPreview (using chatgpt only)
+
 MVC_example
 
 MvcUnit

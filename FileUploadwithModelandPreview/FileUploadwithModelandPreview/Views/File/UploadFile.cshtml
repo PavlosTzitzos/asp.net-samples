@@ -8,11 +8,20 @@
 
 @using (Html.BeginForm("Upload", "File", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-    <input type="file" name="file" id="file" />
+    <!--<input type="file" name="file" id="file"/><!--One file version-->
+
+    <input type="file" name="file1" id="file1" />
+    <input type="file" name="file2" id="file2" />
+    
     <input type="submit" value="Upload" />
 }
-<input type="submit" value="Preview" onclick="previewFile()" />
-<!--<input type="submit" value="HidePreview" onclick="hidePreviewFile()" />-->
+<!--<input type="submit" value="Preview" onclick="previewFile()" /><!--one file version-->
+
+
+<input type="submit" value="Preview1" onclick="previewFile1()" />
+<input type="submit" value="Preview2" onclick="previewFile2()" />
+
+<!--<input type="submit" value="HidePreview" onclick="hidePreviewFile()" />one file version hide preview non floating-->
 
 <span>@ViewBag.Message </span>
 
@@ -21,14 +30,36 @@
         <!-- The preview will be displayed here -->
     </div>
 *@
-
-<div id="floatingPreview" style="display: none;">
-    <span onclick="hidePreviewFile()" class="close-button">&times;</span>
-    <div id="filePreview">
+ one file upload preview
+<div id="floatingPreview1" style="display: none;">
+    <span onclick="hidePreviewFile1()" class="close-button">&times;</span>
+    <div id="filePreview1">
         <!-- The preview will be displayed here -->
     </div>
 </div>
 
+<div id="floatingPreview2" style="display: none;">
+    <span onclick="hidePreviewFile2()" class="close-button">&times;</span>
+    <div id="filePreview2">
+        <!-- The preview will be displayed here -->
+    </div>
+</div>
+
+<!-- 2 file upload preview -->
+@*
+    <div id="filePreview1" class="floating-preview">
+        <!--<span class="close-button" onclick="hidePreview(1)" >&times;</span>-->
+        <!-- The preview for file 1 will be displayed here -->
+        <div id="filePreview1">
+            <!-- The preview will be displayed here -->
+        </div>
+    </div>
+
+    <div id="filePreview2" class="floating-preview">
+        <span class="close-button" onclick="hidePreview(2)" >&times;</span>
+        <!-- The preview for file 2 will be displayed here -->
+    </div>
+*@
 <script>
     /*
     function previewFile()
@@ -40,11 +71,12 @@
         // Redirect to the Preview action passing the file name
         //window.location.href = Url.Action("Preview", "File")?fileName= + file.name;
     }*/
-    var previewShown = false;
 
-    function previewFile() {
-        var preview = document.getElementById("filePreview");
-        var fileInput = document.getElementById('file');
+    var previewShown1 = false;
+
+    function previewFile1() {
+        var preview = document.getElementById("filePreview1");
+        var fileInput = document.getElementById('file1');
         var file = fileInput.files[0];
 
         if (file) {
@@ -73,27 +105,150 @@
             }
 
             reader.readAsDataURL(file);
-            /*
-            if (!previewShown) {
-                preview.style.display = "block"; // Show the preview container if it's hidden
-                previewShown = true;
-            }*/
-            if (!previewShown) {
-                document.getElementById("floatingPreview").style.display = "block";
-                previewShown = true;
+            // non floating one file preview version
+            //if (!previewShown) {
+            //    preview.style.display = "block"; // Show the preview container if it's hidden
+            //    previewShown = true;
+            //}
+            // floating one file preview version
+            if (!previewShown1) {
+                document.getElementById("floatingPreview1").style.display = "block";
+                previewShown1 = true;
             }
         } else {
             preview.innerHTML = "<p>No file selected.</p>";
         }
     }
-    /*
-    function hidePreviewFile() {
-        var preview = document.getElementById("filePreview");
-        preview.style.display = "none";
-        previewShown = false;
-    }*/
-    function hidePreviewFile() {
-        document.getElementById("floatingPreview").style.display = "none";
-        previewShown = false;
+    //one file non floating hide preview button
+
+    //function hidePreviewFile() {
+    //    var preview = document.getElementById("filePreview");
+    //    preview.style.display = "none";
+    //    previewShown = false;
+    //}
+
+    //one file floating hide preview button
+
+    function hidePreviewFile1() {
+        document.getElementById("floatingPreview1").style.display = "none";
+        previewShown1 = false;
     }
+
+    var previewShown2 = false;
+
+    function previewFile2() {
+        var preview = document.getElementById("filePreview2");
+        var fileInput = document.getElementById('file2');
+        var file = fileInput.files[0];
+
+        if (file) {
+            var reader = new FileReader();
+
+            if (file.type.startsWith("image/")) {
+                reader.onloadend = function () {
+                    var img = document.createElement("img");
+                    img.src = reader.result;
+                    img.style.maxWidth = "500px";
+                    preview.innerHTML = ""; // Clear previous preview
+                    preview.appendChild(img);
+                };
+            } else if (file.type === "application/pdf") {
+                reader.onloadend = function () {
+                    var embed = document.createElement("embed");
+                    embed.src = reader.result;
+                    embed.type = file.type;
+                    embed.width = "500px";
+                    embed.height = "600px";
+                    preview.innerHTML = ""; // Clear previous preview
+                    preview.appendChild(embed);
+                };
+            } else {
+                preview.innerHTML = "<p>Preview not available for this file type.</p>";
+            }
+
+            reader.readAsDataURL(file);
+            // non floating one file preview version
+            //if (!previewShown) {
+            //    preview.style.display = "block"; // Show the preview container if it's hidden
+            //    previewShown = true;
+            //}
+            // floating one file preview version
+            if (!previewShown2) {
+                document.getElementById("floatingPreview2").style.display = "block";
+                previewShown2 = true;
+            }
+        } else {
+            preview.innerHTML = "<p>No file selected.</p>";
+        }
+    }
+    //one file non floating hide preview button
+
+    //function hidePreviewFile() {
+    //    var preview = document.getElementById("filePreview");
+    //    preview.style.display = "none";
+    //    previewShown = false;
+    //}
+
+    //one file floating hide preview button
+
+    function hidePreviewFile2() {
+        document.getElementById("floatingPreview2").style.display = "none";
+        previewShown2 = false;
+    }
+
+    // 2 file floating preview controls :
+    /*
+    var previewShown = [false, false];
+    function previewFile(fileNumber) {
+        var preview = document.getElementById(`filePreview${fileNumber}`);
+        var fileInput = document.getElementById(`file${fileNumber}`);
+        var file = fileInput.files[0];
+        console.log('preview ', preview);
+        if (file) {
+            var reader = new FileReader();
+
+            if (file.type.startsWith("image/")) {
+                reader.onloadend = function () {
+                    var img = document.createElement("img");
+                    img.src = reader.result;
+                    img.style.maxWidth = "500px";
+                    preview.innerHTML = ""; // Clear previous preview
+                    preview.appendChild(img);
+                };
+            } else if (file.type === "application/pdf") {
+                reader.onloadend = function () {
+                    var embed = document.createElement("embed");
+                    embed.src = reader.result;
+                    embed.type = file.type;
+                    embed.width = "500px";
+                    embed.height = "600px";
+                    preview.innerHTML = ""; // Clear previous preview
+                    preview.appendChild(embed);
+                };
+            } else {
+                preview.innerHTML = "<p>Preview not available for this file type.</p>";
+            }
+            // Add the close button to the preview container
+            var closeButton = document.createElement("span");
+            closeButton.innerHTML = "&times;";
+            closeButton.classList.add("close-button");
+            closeButton.onclick = function () {
+                hidePreview(fileNumber);
+            };
+            preview.appendChild(closeButton);
+
+            reader.readAsDataURL(file);
+            preview.style.display = "block"; // Show the preview container
+            previewShown[fileNumber - 1] = true;
+        } else {
+            preview.innerHTML = "<p>No file selected.</p>";
+            preview.style.display = "none"; // Hide the preview container if no file is selected
+            previewShown[fileNumber - 1] = false;
+        }
+    }
+    function hidePreview(fileNumber) {
+        var preview = document.getElementById(`filePreview${fileNumber}`);
+        preview.style.display = "none";
+        previewShown[fileNumber - 1] = false;
+    }*/
 </script>

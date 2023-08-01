@@ -7,8 +7,23 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <style>
-        /* Floating preview styles */
-        #floatingPreview {
+            /* Floating preview styles */
+            #floatingPreview1 { /*one file version */
+            /*.floating-preview {*/
+                display: none;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: #fff;
+                border: 1px solid #ccc;
+                padding: 20px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                z-index: 9999;
+                max-width: 80%;
+            }
+        #floatingPreview2 { /*one file version */
+            /*.floating-preview {*/
             display: none;
             position: fixed;
             top: 50%;
@@ -21,16 +36,14 @@
             z-index: 9999;
             max-width: 80%;
         }
-
-        .close-button {
-            position: absolute;
-            top: 5px;
-            right: 10px;
-            font-size: 20px;
-            cursor: pointer;
-        }
-    </style>
-
+            .close-button {
+                position: absolute;
+                top: 5px;
+                right: 10px;
+                font-size: 20px;
+                cursor: pointer;
+            }
+        </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">

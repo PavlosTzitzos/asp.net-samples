@@ -1,0 +1,79 @@
+﻿@model FileUploadwithModelandPreview.Models.UploadFile
+
+@{
+    ViewBag.Title = "UploadFile";
+}
+
+<h2>UploadFile</h2>
+
+@using (Html.BeginForm("Upload", "File", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" name="file" id="file" />
+    <input type="submit" value="Upload" />
+}
+<input type="submit" value="Preview" onclick="previewFile()" />
+<input type="submit" value="HidePreview" onclick="hidePreviewFile()" />
+<span>@ViewBag.Message </span>
+
+<div id="filePreview">
+
+</div>
+
+<script>
+    /*
+    function previewFile()
+    {
+        // Get the selected file from the file input
+        var fileInput = document.getElementById('file');
+        var file = fileInput.files[0];
+
+        // Redirect to the Preview action passing the file name
+        //window.location.href = Url.Action("Preview", "File")?fileName= + file.name;
+    }*/
+    var previewShown = false;
+
+    function previewFile() {
+        var preview = document.getElementById("filePreview");
+        var fileInput = document.getElementById('file');
+        var file = fileInput.files[0];
+
+        if (file) {
+            var reader = new FileReader();
+
+            if (file.type.startsWith("image/")) {
+                reader.onloadend = function () {
+                    var img = document.createElement("img");
+                    img.src = reader.result;
+                    img.style.maxWidth = "500px";
+                    preview.innerHTML = ""; // Clear previous preview
+                    preview.appendChild(img);
+                };
+            } else if (file.type === "application/pdf") {
+                reader.onloadend = function () {
+                    var embed = document.createElement("embed");
+                    embed.src = reader.result;
+                    embed.type = file.type;
+                    embed.width = "500px";
+                    embed.height = "600px";
+                    preview.innerHTML = ""; // Clear previous preview
+                    preview.appendChild(embed);
+                };
+            } else {
+                preview.innerHTML = "<p>Preview not available for this file type.</p>";
+            }
+
+            reader.readAsDataURL(file);
+            if (!previewShown) {
+                preview.style.display = "block"; // Show the preview container if it's hidden
+                previewShown = true;
+            }
+        } else {
+            preview.innerHTML = "<p>No file selected.</p>";
+        }
+    }
+    function hidePreviewFile() {
+        var preview = document.getElementById("filePreview");
+        preview.style.display = "none";
+        previewShown = false;
+    }
+</script>

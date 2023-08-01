@@ -12,15 +12,19 @@
 
     <input type="file" name="file1" id="file1" />
     <input type="file" name="file2" id="file2" />
-    
+
     <input type="submit" value="Upload" />
 }
 <!--<input type="submit" value="Preview" onclick="previewFile()" /><!--one file version-->
 
+<input type="submit" value="Preview1" onclick="previewFile(1)" />
+<input type="submit" value="Preview2" onclick="previewFile(2)" />
 
-<input type="submit" value="Preview1" onclick="previewFile1()" />
-<input type="submit" value="Preview2" onclick="previewFile2()" />
 
+@*
+    <input type="submit" value="Preview1" onclick="previewFile1()" />
+    <input type="submit" value="Preview2" onclick="previewFile2()" />
+*@
 <!--<input type="submit" value="HidePreview" onclick="hidePreviewFile()" />one file version hide preview non floating-->
 
 <span>@ViewBag.Message </span>
@@ -30,7 +34,7 @@
         <!-- The preview will be displayed here -->
     </div>
 *@
- one file upload preview
+@* one file upload preview
 <div id="floatingPreview1" style="display: none;">
     <span onclick="hidePreviewFile1()" class="close-button">&times;</span>
     <div id="filePreview1">
@@ -40,6 +44,21 @@
 
 <div id="floatingPreview2" style="display: none;">
     <span onclick="hidePreviewFile2()" class="close-button">&times;</span>
+    <div id="filePreview2">
+        <!-- The preview will be displayed here -->
+    </div>
+</div>
+*@
+
+<div id="floatingPreview1" style="display: none;">
+    <span onclick="hidePreviewFile(1)" class="close-button">&times;</span>
+    <div id="filePreview1">
+        <!-- The preview will be displayed here -->
+    </div>
+</div>
+
+<div id="floatingPreview2" style="display: none;">
+    <span onclick="hidePreviewFile(2)" class="close-button">&times;</span>
     <div id="filePreview2">
         <!-- The preview will be displayed here -->
     </div>
@@ -72,6 +91,7 @@
         //window.location.href = Url.Action("Preview", "File")?fileName= + file.name;
     }*/
 
+    /* working 2 file floating
     var previewShown1 = false;
 
     function previewFile1() {
@@ -118,7 +138,7 @@
         } else {
             preview.innerHTML = "<p>No file selected.</p>";
         }
-    }
+    }*/
     //one file non floating hide preview button
 
     //function hidePreviewFile() {
@@ -129,6 +149,7 @@
 
     //one file floating hide preview button
 
+    /*working 2 file floating
     function hidePreviewFile1() {
         document.getElementById("floatingPreview1").style.display = "none";
         previewShown1 = false;
@@ -180,7 +201,7 @@
         } else {
             preview.innerHTML = "<p>No file selected.</p>";
         }
-    }
+    }*/
     //one file non floating hide preview button
 
     //function hidePreviewFile() {
@@ -191,11 +212,65 @@
 
     //one file floating hide preview button
 
+    //working 2 file floating
+    /*
     function hidePreviewFile2() {
         document.getElementById("floatingPreview2").style.display = "none";
         previewShown2 = false;
+    }*/
+    var previewShown = [false, false];
+
+    function previewFile(fileNumber) {
+        var preview = document.getElementById(`filePreview${fileNumber}`);
+        var fileInput = document.getElementById(`file${fileNumber}`);
+        var file = fileInput.files[0];
+
+        if (file) {
+            var reader = new FileReader();
+
+            if (file.type.startsWith("image/")) {
+                reader.onloadend = function () {
+                    var img = document.createElement("img");
+                    img.src = reader.result;
+                    img.style.maxWidth = "500px";
+                    preview.innerHTML = ""; // Clear previous preview
+                    preview.appendChild(img);
+                };
+            } else if (file.type === "application/pdf") {
+                reader.onloadend = function () {
+                    var embed = document.createElement("embed");
+                    embed.src = reader.result;
+                    embed.type = file.type;
+                    embed.width = "500px";
+                    embed.height = "600px";
+                    preview.innerHTML = ""; // Clear previous preview
+                    preview.appendChild(embed);
+                };
+            } else {
+                preview.innerHTML = "<p>Preview not available for this file type.</p>";
+            }
+
+            reader.readAsDataURL(file);
+            // non floating one file preview version
+            //if (!previewShown) {
+            //    preview.style.display = "block"; // Show the preview container if it's hidden
+            //    previewShown = true;
+            //}
+            // floating one file preview version
+            if (!previewShown[fileNumber -1]) {
+                document.getElementById(`floatingPreview${fileNumber}`).style.display = "block";
+                previewShown[fileNumber -1] = true;
+            }
+        } else {
+            preview.innerHTML = "<p>No file selected.</p>";
+        }
     }
 
+    function hidePreviewFile(fileNumber) {
+        document.getElementById(`floatingPreview${fileNumber}`).style.display = "none";
+        previewShown[fileNumber - 1] = false;
+    }
+    
     // 2 file floating preview controls :
     /*
     var previewShown = [false, false];

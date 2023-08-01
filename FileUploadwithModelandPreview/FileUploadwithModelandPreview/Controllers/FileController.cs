@@ -48,7 +48,8 @@ namespace FileUploadwithModelandPreview.Controllers
         [HttpPost]
         public ActionResult Upload(HttpPostedFileBase file1, HttpPostedFileBase file2)
         {
-            if (file1 != null && file1.ContentLength > 0)
+            
+            if ((file1 != null && file1.ContentLength > 0) && (file2 != null && file2.ContentLength > 0))
             {
                 string _FileName1 = Path.GetFileName(file1.FileName);
                 string _path1 = Path.Combine(Server.MapPath("~/UploadedFiles"), _FileName1);
@@ -56,31 +57,33 @@ namespace FileUploadwithModelandPreview.Controllers
 
                 // Save the file information to the database or session, if needed.
                 // For the purpose of this example, we won't be saving the details of the file in the database.
-                var model = new UploadFile
+                var model1 = new UploadFile
                 {
                     FileName = _FileName1,
                     ContentType = file1.ContentType
                 };
                 ViewBag.Message = "File Uploaded Successfully!!";
-            }
-
-            if (file2 != null && file2.ContentLength > 0)
-            {
+            
                 string _FileName2 = Path.GetFileName(file2.FileName);
                 string _path2 = Path.Combine(Server.MapPath("~/UploadedFiles"), _FileName2);
                 file2.SaveAs(_path2);
 
                 // Save the file information to the database or session, if needed.
                 // For the purpose of this example, we won't be saving the details of the file in the database.
-                var model = new UploadFile
+                var model2 = new UploadFile
                 {
                     FileName = _FileName2,
                     ContentType = file2.ContentType
                 };
                 ViewBag.Message = "File Uploaded Successfully!!";
             }
+            else
+            {
+                ViewBag.Message = "!!! WARNING !!! Both files must be uploaded!!";
+                return View("UploadFile");
+            }
 
-            return RedirectToAction("UploadForm");
+            return View("UploadFile");
         }
 
     }

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using static FileUploadwithModelandPreview.Models.UploadFile;
@@ -105,6 +106,24 @@ namespace FileUploadwithModelandPreview.Controllers
             }
 
             return View("UploadFile");
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            UploadFile UploadedFile = db.UploadFiles.Find(id);
+            if (UploadedFile == null)
+            {
+                return HttpNotFound();
+            }
+            db.UploadFiles.Remove(UploadedFile);
+            db.SaveChanges();
+            return RedirectToAction("ViewOldUpload");
         }
 
         public ActionResult ViewOldUpload()

@@ -12,11 +12,21 @@
     <input type="submit" value="Upload" />
 }
 <input type="submit" value="Preview" onclick="previewFile()" />
-<input type="submit" value="HidePreview" onclick="hidePreviewFile()" />
+<!--<input type="submit" value="HidePreview" onclick="hidePreviewFile()" />-->
+
 <span>@ViewBag.Message </span>
 
-<div id="filePreview">
+@*
+    <div id="filePreview">
+        <!-- The preview will be displayed here -->
+    </div>
+*@
 
+<div id="floatingPreview" style="display: none;">
+    <span onclick="hidePreviewFile()" class="close-button">&times;</span>
+    <div id="filePreview">
+        <!-- The preview will be displayed here -->
+    </div>
 </div>
 
 <script>
@@ -63,17 +73,27 @@
             }
 
             reader.readAsDataURL(file);
+            /*
             if (!previewShown) {
                 preview.style.display = "block"; // Show the preview container if it's hidden
+                previewShown = true;
+            }*/
+            if (!previewShown) {
+                document.getElementById("floatingPreview").style.display = "block";
                 previewShown = true;
             }
         } else {
             preview.innerHTML = "<p>No file selected.</p>";
         }
     }
+    /*
     function hidePreviewFile() {
         var preview = document.getElementById("filePreview");
         preview.style.display = "none";
+        previewShown = false;
+    }*/
+    function hidePreviewFile() {
+        document.getElementById("floatingPreview").style.display = "none";
         previewShown = false;
     }
 </script>

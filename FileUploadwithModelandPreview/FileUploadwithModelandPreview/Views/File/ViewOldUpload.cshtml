@@ -1,0 +1,39 @@
+﻿@model IEnumerable<FileUploadwithModelandPreview.Models.UploadFile>
+
+@{
+    ViewBag.Title = "View Old Uploads";
+}
+
+<h2>View Old Uploads</h2>
+
+
+<table class="table">
+    <tr>
+        <td>
+            @Html.DisplayNameFor(model => model.FileId)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.FileName)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.ContentType)
+        </td>
+    </tr>
+    @foreach (var items in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => items.FileId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => items.FileName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => items.ContentType)
+            </td>
+        </tr>
+    }
+</table>
+
+
+

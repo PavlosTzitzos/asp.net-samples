@@ -44,6 +44,17 @@
             font-size: 20px;
             cursor: pointer;
         }
+        /* Overlay styles */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9998; /* Ensure the overlay is below the floating preview */
+        }
     </style>
 </head>
 <body>
@@ -60,6 +71,7 @@
                     <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Upload", "UploadForm", "File", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("View Uploads", "ViewOldUpload", "File", new { area = "" }, new { @class = "nav-link" })</li>
                 </ul>
             </div>
         </div>

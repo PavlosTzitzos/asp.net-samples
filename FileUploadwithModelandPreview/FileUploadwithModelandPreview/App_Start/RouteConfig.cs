@@ -34,11 +34,11 @@ namespace FileUploadwithModelandPreview
             );
 
             // Custom route for the file preview action
-            /*routes.MapRoute(
-                name: "Preview",
-                url: "File/Preview/{fileName}",
-                defaults: new { controller = "File", action = "Preview", fileName = UrlParameter.Optional }
-            );*/
+            routes.MapRoute(
+                name: "ViewOldUploads",
+                url: "File/ViewOldUploads/{id}",
+                defaults: new { controller = "File", action = "ViewOldUpload", id = UrlParameter.Optional }
+            );
         }
     }
 }

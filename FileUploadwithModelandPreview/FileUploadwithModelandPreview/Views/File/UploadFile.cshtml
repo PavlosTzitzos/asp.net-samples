@@ -20,6 +20,7 @@
 <input type="submit" value="Preview1" onclick="previewFile(1)" />
 <input type="submit" value="Preview2" onclick="previewFile(2)" />
 
+<div class="overlay" id="overlay"></div>
 
 @*
     <input type="submit" value="Preview1" onclick="previewFile1()" />
@@ -218,6 +219,8 @@
         document.getElementById("floatingPreview2").style.display = "none";
         previewShown2 = false;
     }*/
+
+    // 2 file floating preview controls :
     var previewShown = [false, false];
 
     function previewFile(fileNumber) {
@@ -261,69 +264,22 @@
                 document.getElementById(`floatingPreview${fileNumber}`).style.display = "block";
                 previewShown[fileNumber -1] = true;
             }
+            var overlay = document.getElementById("overlay");
+            overlay.style.display = "block";
         } else {
             preview.innerHTML = "<p>No file selected.</p>";
+            var overlay = document.getElementById("overlay");
+            overlay.style.display = "none";
         }
     }
 
     function hidePreviewFile(fileNumber) {
         document.getElementById(`floatingPreview${fileNumber}`).style.display = "none";
         previewShown[fileNumber - 1] = false;
+        // Hide the overlay to enable background interactions
+        var overlay = document.getElementById("overlay");
+        overlay.style.display = "none";
     }
     
-    // 2 file floating preview controls :
-    /*
-    var previewShown = [false, false];
-    function previewFile(fileNumber) {
-        var preview = document.getElementById(`filePreview${fileNumber}`);
-        var fileInput = document.getElementById(`file${fileNumber}`);
-        var file = fileInput.files[0];
-        console.log('preview ', preview);
-        if (file) {
-            var reader = new FileReader();
-
-            if (file.type.startsWith("image/")) {
-                reader.onloadend = function () {
-                    var img = document.createElement("img");
-                    img.src = reader.result;
-                    img.style.maxWidth = "500px";
-                    preview.innerHTML = ""; // Clear previous preview
-                    preview.appendChild(img);
-                };
-            } else if (file.type === "application/pdf") {
-                reader.onloadend = function () {
-                    var embed = document.createElement("embed");
-                    embed.src = reader.result;
-                    embed.type = file.type;
-                    embed.width = "500px";
-                    embed.height = "600px";
-                    preview.innerHTML = ""; // Clear previous preview
-                    preview.appendChild(embed);
-                };
-            } else {
-                preview.innerHTML = "<p>Preview not available for this file type.</p>";
-            }
-            // Add the close button to the preview container
-            var closeButton = document.createElement("span");
-            closeButton.innerHTML = "&times;";
-            closeButton.classList.add("close-button");
-            closeButton.onclick = function () {
-                hidePreview(fileNumber);
-            };
-            preview.appendChild(closeButton);
-
-            reader.readAsDataURL(file);
-            preview.style.display = "block"; // Show the preview container
-            previewShown[fileNumber - 1] = true;
-        } else {
-            preview.innerHTML = "<p>No file selected.</p>";
-            preview.style.display = "none"; // Hide the preview container if no file is selected
-            previewShown[fileNumber - 1] = false;
-        }
-    }
-    function hidePreview(fileNumber) {
-        var preview = document.getElementById(`filePreview${fileNumber}`);
-        preview.style.display = "none";
-        previewShown[fileNumber - 1] = false;
-    }*/
+    
 </script>

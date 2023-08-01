@@ -5,11 +5,14 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using static FileUploadwithModelandPreview.Models.UploadFile;
 
 namespace FileUploadwithModelandPreview.Controllers
 {
     public class FileController : Controller
     {
+        private readonly UploadFileDBContext db = new UploadFileDBContext("Name=FileUploadwithModelandPreview");
+        
         // GET: File
         public ActionResult UploadForm()
         {
@@ -56,26 +59,44 @@ namespace FileUploadwithModelandPreview.Controllers
                 file1.SaveAs(_path1);
 
                 // Save the file information to the database or session, if needed.
-                // For the purpose of this example, we won't be saving the details of the file in the database.
+                //Saving the data in the DB
+                byte[] fileContent1;
+                using (var binaryReader1 = new BinaryReader(file1.InputStream))
+                {
+                    fileContent1 = binaryReader1.ReadBytes(file1.ContentLength);
+                }
                 var model1 = new UploadFile
                 {
-                    FileName = _FileName1,
-                    ContentType = file1.ContentType
+                    FileName = file1.FileName,
+                    ContentType = file1.ContentType,
+                    Content = fileContent1
                 };
-                ViewBag.Message = "File Uploaded Successfully!!";
-            
+                // Save the uploadedFile object to the database using your DbContext
+                db.UploadFiles.Add(model1);
+                db.SaveChanges();
                 string _FileName2 = Path.GetFileName(file2.FileName);
                 string _path2 = Path.Combine(Server.MapPath("~/UploadedFiles"), _FileName2);
                 file2.SaveAs(_path2);
 
                 // Save the file information to the database or session, if needed.
-                // For the purpose of this example, we won't be saving the details of the file in the database.
+                //Saving the data in the DB
+                byte[] fileContent2;
+                using (var binaryReader2 = new BinaryReader(file2.InputStream))
+                {
+                    fileContent2 = binaryReader2.ReadBytes(file2.ContentLength);
+                }
                 var model2 = new UploadFile
                 {
-                    FileName = _FileName2,
-                    ContentType = file2.ContentType
+                    FileName = file2.FileName,
+                    ContentType = file2.ContentType,
+                    Content = fileContent2
                 };
                 ViewBag.Message = "File Uploaded Successfully!!";
+
+                // Save the uploadedFile object to the database using your DbContext
+                db.UploadFiles.Add(model2);
+                db.SaveChanges();
+
             }
             else
             {
@@ -86,5 +107,9 @@ namespace FileUploadwithModelandPreview.Controllers
             return View("UploadFile");
         }
 
+        public ActionResult ViewOldUpload()
+        {
+            return View(db.UploadFiles.ToList());
+        }
     }
 }

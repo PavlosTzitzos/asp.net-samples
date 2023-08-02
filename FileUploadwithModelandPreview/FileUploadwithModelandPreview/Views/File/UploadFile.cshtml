@@ -10,15 +10,25 @@
 {
     <!--<input type="file" name="file" id="file"/><!--One file version-->
 
-    <input type="file" name="file1" id="file1" />
-    <input type="file" name="file2" id="file2" />
+    <input type="file" name="file1" id="file1" onchange="previewFile(1)" />
+    <input type="file" name="file2" id="file2" onchange="previewFile(2)" />
 
     <input type="submit" value="Upload" />
+
 }
 <!--<input type="submit" value="Preview" onclick="previewFile()" /><!--one file version-->
 
-<input type="submit" value="Preview1" onclick="previewFile(1)" />
-<input type="submit" value="Preview2" onclick="previewFile(2)" />
+@*
+    @using (Html.BeginForm("", ""))
+    {
+        <input type="submit" value="Preview1" onclick="previewFile(1)" />
+    }
+
+    @using (Html.BeginForm("", ""))
+    {
+        <input type="submit" value="Preview2" onclick="previewFile(2)" />
+    }
+*@
 
 <div class="overlay" id="overlay"></div>
 
@@ -36,19 +46,19 @@
     </div>
 *@
 @* one file upload preview
-<div id="floatingPreview1" style="display: none;">
-    <span onclick="hidePreviewFile1()" class="close-button">&times;</span>
-    <div id="filePreview1">
-        <!-- The preview will be displayed here -->
+    <div id="floatingPreview1" style="display: none;">
+        <span onclick="hidePreviewFile1()" class="close-button">&times;</span>
+        <div id="filePreview1">
+            <!-- The preview will be displayed here -->
+        </div>
     </div>
-</div>
 
-<div id="floatingPreview2" style="display: none;">
-    <span onclick="hidePreviewFile2()" class="close-button">&times;</span>
-    <div id="filePreview2">
-        <!-- The preview will be displayed here -->
+    <div id="floatingPreview2" style="display: none;">
+        <span onclick="hidePreviewFile2()" class="close-button">&times;</span>
+        <div id="filePreview2">
+            <!-- The preview will be displayed here -->
+        </div>
     </div>
-</div>
 *@
 
 <div id="floatingPreview1" style="display: none;">
@@ -225,6 +235,7 @@
 
     function previewFile(fileNumber) {
         var preview = document.getElementById(`filePreview${fileNumber}`);
+        console.log("value: ", preview)
         var fileInput = document.getElementById(`file${fileNumber}`);
         var file = fileInput.files[0];
 
@@ -260,9 +271,9 @@
             //    previewShown = true;
             //}
             // floating one file preview version
-            if (!previewShown[fileNumber -1]) {
+            if (!previewShown[fileNumber - 1]) {
                 document.getElementById(`floatingPreview${fileNumber}`).style.display = "block";
-                previewShown[fileNumber -1] = true;
+                previewShown[fileNumber - 1] = true;
             }
             var overlay = document.getElementById("overlay");
             overlay.style.display = "block";
@@ -280,6 +291,6 @@
         var overlay = document.getElementById("overlay");
         overlay.style.display = "none";
     }
-    
-    
+
+
 </script>

@@ -34,7 +34,9 @@ namespace OCRwithTesseract.Controllers
                 file.SaveAs(_path);
                 //
                 var Ocr = new IronTesseract(); // nothing to configure
-                Ocr.Language = OcrLanguage.English;
+                Ocr.Language = OcrLanguage.English; // one language
+                // Add as many secondary languages as you like : (dont forget to add the NuGet Package)
+                Ocr.AddSecondaryLanguage(OcrLanguage.Greek);
                 Ocr.Configuration.TesseractVersion = TesseractVersion.Tesseract5;
                 string ExtractedText;
                 using (var Input = new OcrInput())

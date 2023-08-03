@@ -295,11 +295,13 @@
     <Error Condition="!Exists('..\packages\IronOcr.2023.8.34\build\net\IronOcr.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\IronOcr.2023.8.34\build\net\IronOcr.targets'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\IronOcr.Languages.Greek.2020.11.2\build\IronOcr.Languages.Greek.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\IronOcr.Languages.Greek.2020.11.2\build\IronOcr.Languages.Greek.targets'))" />
   </Target>
   <Import Project="..\packages\IronSoftware.Native.PdfModel.2023.8.17287\build\net\IronSoftware.Native.PdfModel.targets" Condition="Exists('..\packages\IronSoftware.Native.PdfModel.2023.8.17287\build\net\IronSoftware.Native.PdfModel.targets')" />
   <Import Project="..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets" Condition="Exists('..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets')" />
   <Import Project="..\packages\IronOcr.2023.8.34\build\net\IronOcr.targets" Condition="Exists('..\packages\IronOcr.2023.8.34\build\net\IronOcr.targets')" />
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <Import Project="..\packages\IronOcr.Languages.Greek.2020.11.2\build\IronOcr.Languages.Greek.targets" Condition="Exists('..\packages\IronOcr.Languages.Greek.2020.11.2\build\IronOcr.Languages.Greek.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

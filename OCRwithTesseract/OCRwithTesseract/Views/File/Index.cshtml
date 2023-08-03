@@ -1,0 +1,83 @@
+﻿
+﻿@model OCRwithTesseract.Models.UploadFile
+
+@{
+    ViewBag.Title = "Upload File";
+}
+
+<h2>Upload File</h2>
+
+@using (Html.BeginForm("Upload", "File", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" name="file" id="file"/><!--One file version-->
+
+    <input type="submit" value="Upload" />
+
+}
+
+<input type="submit" value="Preview" onclick="previewFile()" /><!--one file version-->
+
+
+<div class="overlay" id="overlay"></div>
+
+<input type="submit" value="HidePreview" onclick="hidePreviewFile()" />
+
+<div> @ViewBag.Message </div>
+
+
+<div id="floatingPreview" style="display: none;">
+    <span onclick="hidePreviewFile()" class="close-button">&times;</span>
+    <div id="filePreview">
+        <!-- The preview will be displayed here -->
+    </div>
+</div>
+
+
+<script>
+    var previewShown = false;
+
+    function previewFile() {
+        var preview = document.getElementById("filePreview");
+        var fileInput = document.getElementById('file');
+        var file = fileInput.files[0];
+
+        if (file) {
+            var reader = new FileReader();
+
+            if (file.type.startsWith("image/")) {
+                reader.onloadend = function () {
+                    var img = document.createElement("img");
+                    img.src = reader.result;
+                    img.style.maxWidth = "500px";
+                    preview.innerHTML = ""; // Clear previous preview
+                    preview.appendChild(img);
+                };
+            } else if (file.type === "application/pdf") {
+                reader.onloadend = function () {
+                    var embed = document.createElement("embed");
+                    embed.src = reader.result;
+                    embed.type = file.type;
+                    embed.width = "500px";
+                    embed.height = "600px";
+                    preview.innerHTML = ""; // Clear previous preview
+                    preview.appendChild(embed);
+                };
+            } else {
+                preview.innerHTML = "<p>Preview not available for this file type.</p>";
+            }
+
+            reader.readAsDataURL(file);
+            // floating one file preview version
+            if (!previewShown) {
+                document.getElementById("floatingPreview").style.display = "block";
+                previewShown = true;
+            }
+        } else {
+            preview.innerHTML = "<p>No file selected.</p>";
+        }
+    }
+    function hidePreviewFile() {
+        document.getElementById("floatingPreview").style.display = "none";
+        previewShown = false;
+    }
+</script>

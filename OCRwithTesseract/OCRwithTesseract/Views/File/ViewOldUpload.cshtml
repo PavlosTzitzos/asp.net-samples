@@ -1,0 +1,107 @@
+﻿﻿@model IEnumerable<OCRwithTesseract.Models.UploadFile>
+@Html.AntiForgeryToken()
+@{
+    ViewBag.Title = "View Old Uploads";
+}
+
+<h2>View Old Uploads</h2>
+
+
+<table class="table">
+    <tr>
+        <td>
+            @Html.DisplayNameFor(model => model.FileId)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.FileName)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.ContentType)
+        </td>
+        <td>
+            Actions
+        </td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FileId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FileName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContentType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExtractedText)
+            </td>
+            <td>
+                <button onclick="showPreview('@item.FileName', '@item.ContentType')">Preview</button>
+                @Html.ActionLink("Delete", "Delete", new { id = item.FileId })
+            </td>
+        </tr>
+    }
+</table>
+
+<div class="overlay" id="overlay"></div>
+
+<div id="filePreview" class="floating-preview">
+    <div id="previewContent">
+        <!-- The preview content will be displayed here -->
+    </div>
+</div>
+
+<script>
+    function showPreview(fileName, contentType) {
+        var overlay = document.getElementById("overlay");
+        var preview = document.getElementById("filePreview");
+        var previewContent = document.getElementById("previewContent");
+
+        // Clear previous content
+        previewContent.innerHTML = "";
+
+        // Display the overlay
+        overlay.style.display = "block";
+        // Display the preview container
+        preview.style.display = "block";
+
+        // Show the close button
+        var closeButton = document.createElement("span");
+        closeButton.innerHTML = "&times;";
+        closeButton.classList.add("close-button");
+        closeButton.onclick = function () {
+            //preview.style.display = "none";
+            hidePreview();
+        };
+        previewContent.appendChild(closeButton);
+
+        // Display preview content based on the file type
+        if (contentType.startsWith("image/")) {
+            var img = document.createElement("img");
+            img.src = "/UploadedFiles/" + encodeURIComponent(fileName);
+            img.style.maxWidth = "500px";
+            previewContent.appendChild(img);
+        } else if (contentType === "application/pdf") {
+            var embed = document.createElement("embed");
+            embed.src = "/UploadedFiles/" + encodeURIComponent(fileName);
+            embed.type = contentType;
+            embed.width = "500px";
+            embed.height = "600px";
+            previewContent.appendChild(embed);
+        } else {
+            var unsupportedMsg = document.createElement("p");
+            unsupportedMsg.textContent = "Preview not available for this file type.";
+            previewContent.appendChild(unsupportedMsg);
+        }
+    }
+    function hidePreview() {
+        var overlay = document.getElementById("overlay");
+        var preview = document.getElementById("filePreview");
+
+        // Hide the overlay and floating preview container
+        overlay.style.display = "none";
+        preview.style.display = "none";
+    }
+</script>

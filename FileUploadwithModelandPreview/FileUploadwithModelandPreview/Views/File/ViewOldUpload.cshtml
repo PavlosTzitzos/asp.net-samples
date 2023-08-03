@@ -35,8 +35,12 @@
                 @Html.DisplayFor(modelItem => item.ContentType)
             </td>
             <td>
-                <button onclick="showPreview('@item.FileName', '@item.ContentType')">Preview</button>
-                @Html.ActionLink("Delete", "Delete", new { id = item.FileId })
+                <button class="btn btn-info" onclick="showPreview('@item.FileName', '@item.ContentType')">Preview</button>
+                @using (Html.BeginForm("Delete", "File", new { id = item.FileId }, FormMethod.Post, new { onsubmit = "return confirm('Are you sure you want to delete this item?');" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="submit" value="Delete" class="btn btn-danger" />
+                }
             </td>
         </tr>
     }

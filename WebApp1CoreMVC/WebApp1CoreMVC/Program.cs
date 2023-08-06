@@ -1,9 +1,22 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using WebApp1CoreMVC.Models;
+using WebApp1CoreMVC.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<WebApp1CoreMVCContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("WebApp1CoreMVCContext") ?? throw new InvalidOperationException("Connection string 'WebApp1CoreMVCContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+
+    SeedData.Initialize(services);
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

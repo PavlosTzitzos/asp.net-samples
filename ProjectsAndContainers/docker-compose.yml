@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  projectsandcontainers:
+    image: ${DOCKER_REGISTRY-}projectsandcontainers
+    build:
+      context: .
+      dockerfile: ProjectsAndContainers/Dockerfile
+
+  webapi:
+    image: ${DOCKER_REGISTRY-}webapi
+    build:
+      context: .
+      dockerfile: WebAPI/Dockerfile
+
+  redis:
+   image: redis

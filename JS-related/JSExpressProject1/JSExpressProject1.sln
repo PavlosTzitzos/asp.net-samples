@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "JSExpressProject1", "JSExpressProject1\JSExpressProject1.esproj", "{AA52ACC1-075E-46EA-B97A-29A4D4F97513}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AA52ACC1-075E-46EA-B97A-29A4D4F97513}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA52ACC1-075E-46EA-B97A-29A4D4F97513}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA52ACC1-075E-46EA-B97A-29A4D4F97513}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{AA52ACC1-075E-46EA-B97A-29A4D4F97513}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA52ACC1-075E-46EA-B97A-29A4D4F97513}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA52ACC1-075E-46EA-B97A-29A4D4F97513}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {93DC3D14-AC73-4119-A356-F88202F4951B}
+	EndGlobalSection
+EndGlobal

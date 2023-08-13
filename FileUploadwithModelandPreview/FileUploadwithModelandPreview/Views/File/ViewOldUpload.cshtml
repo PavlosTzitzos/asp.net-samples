@@ -35,6 +35,10 @@
                 @Html.DisplayFor(modelItem => item.ContentType)
             </td>
             <td>
+                
+                <a href="~/UploadedFiles/κοτ γ mockup.docx" download>
+                    <button class="btn btn-link">Download File</button>
+                </a>
                 <button class="btn btn-info" onclick="showPreview('@item.FileName', '@item.ContentType')">Preview</button>
                 @using (Html.BeginForm("Delete", "File", new { id = item.FileId }, FormMethod.Post, new { onsubmit = "return confirm('Are you sure you want to delete this item?');" }))
                 {

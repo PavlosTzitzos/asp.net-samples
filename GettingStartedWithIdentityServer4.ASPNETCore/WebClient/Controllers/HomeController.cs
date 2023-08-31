@@ -65,7 +65,7 @@ namespace WebClient.Controllers
             using (var client = new HttpClient())
             {
                 client.SetBearerToken(token.AccessToken);
-                var result = await client.GetAsync("https://localhost:7201/weatherforecast");
+                var result = await client.GetAsync("http://192.168.2.3:7201/weatherforecast");
                 if (result.IsSuccessStatusCode)
                 {
                     var model = await result.Content.ReadAsStringAsync();

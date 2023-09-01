@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "reactapp", "reactapp\reactapp.esproj", "{43410C6E-8536-4D34-84B1-6559E905029C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BCB0645F-2546-4701-9CC8-01EBDA139A4A} = {BCB0645F-2546-4701-9CC8-01EBDA139A4A}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webapi", "webapi\webapi.csproj", "{BCB0645F-2546-4701-9CC8-01EBDA139A4A}"
 EndProject

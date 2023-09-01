@@ -1,0 +1,15 @@
+# Ignore IDE folders
+.idea/
+.vs/
+.vscode/
+Saunter-MQTTnet-AspNet5-AttributeRouting-ExampleProject/.idea/
+Saunter-MQTTnet-AspNet5-AttributeRouting-ExampleProject/.vs/
+Saunter-MQTTnet-AspNet5-AttributeRouting-ExampleProject/.vscode/
+# Ignore ReSharper DotSettings.user files
+*.DotSettings.user
+# Ignore Saunter-MQTTnet-AspNet5-AttributeRouting-ExampleProject build folders and .cache file
+Saunter-MQTTnet-AspNet5-AttributeRouting-ExampleProject/bin/
+Saunter-MQTTnet-AspNet5-AttributeRouting-ExampleProject/obj/
+Saunter-MQTTnet-AspNet5-AttributeRouting-ExampleProject/*.cache
+# Ignore .cache files
+*.cache

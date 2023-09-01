@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>netstandard2.0;netcoreapp3.1;net5.0</TargetFrameworks>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<Description>
+			This is a support library to integrate AttributeRouting into MQTTnet with AspNetCore.
+
+			Easily create Controllers and Actions to process incoming MQTT messages using attribute-based routing against the incoming message topic.
+		</Description>
+		<Copyright>Copyright (c) Atlas Lift Tech Inc. 2021</Copyright>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageTags>MQTT Message Queue Telemetry Transport MQTTClient MQTTServer Server MQTTBroker Broker NETStandard IoT InternetOfThings Messaging Hardware Arduino Sensor Actuator M2M ESP Smart Home Cities Automation Xamarin Blazor AspNetCore</PackageTags>
+		<Company>Atlas Lift Tech Inc.</Company>
+		<Authors>Anton Vishnyak</Authors>
+		<AssemblyVersion>0.3.16</AssemblyVersion>
+		<FileVersion>0.3.16</FileVersion>
+		<SignAssembly>true</SignAssembly>
+		<DelaySign>false</DelaySign>
+		<AssemblyOriginatorKeyFile>codeSigningKey.pfx</AssemblyOriginatorKeyFile>
+		<LangVersion>default</LangVersion>
+		<RepositoryUrl>https://github.com/Atlas-LiftTech/MQTTnet.AspNetCore.AttributeRouting</RepositoryUrl>
+		<RepositoryType>GIT</RepositoryType>
+		<PackageReleaseNotes>* Added support for passing an array of assemblies to use in route discovery</PackageReleaseNotes>
+		<Version>0.3.16</Version>
+		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+		<PackageProjectUrl>https://github.com/Atlas-LiftTech/MQTTnet.AspNetCore.AttributeRouting</PackageProjectUrl>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<EnableNETAnalyzers>true</EnableNETAnalyzers>
+	</PropertyGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+		<PackageReference Include="Microsoft.AspNetCore.Http.Connections" Version="1.1.0" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+		<PackageReference Include="Microsoft.Bcl.HashCode" Version="1.1.1" />
+		<PackageReference Include="MQTTnet" Version="3.0.16" />
+		<PackageReference Include="MQTTnet.AspNetCore" Version="3.0.16" />
+	</ItemGroup>
+</Project>

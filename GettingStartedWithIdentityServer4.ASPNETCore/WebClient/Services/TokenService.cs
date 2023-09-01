@@ -14,7 +14,7 @@ namespace WebClient.Services
         {
             using (var client = new HttpClient())
             {
-                _discDocument = client.GetDiscoveryDocumentAsync("https://localhost:7232/.well-known/openid-configuration").Result;
+                _discDocument = client.GetDiscoveryDocumentAsync("http://192.168.2.3:7232/.well-known/openid-configuration").Result;
             }
         }
         public async Task<TokenResponse> GetToken(string scope)

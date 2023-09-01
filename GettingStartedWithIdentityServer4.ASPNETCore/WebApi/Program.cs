@@ -10,7 +10,8 @@ builder.Services.AddAuthentication("Bearer")
     .AddIdentityServerAuthentication("Bearer", options =>
     {
         options.ApiName = "myApi";
-        options.Authority = "https://localhost:7232";
+        options.Authority = "http://192.168.2.3:7232";
+        options.RequireHttpsMetadata = false;
     });
 
 var app = builder.Build();

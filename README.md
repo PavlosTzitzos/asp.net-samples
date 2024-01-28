@@ -1,18 +1,18 @@
-## ASP.NET Samples
+# ASP.NET Samples
 
 In this repository you will find many implementations of the same web apps. The differences are some implementation details, configuration details, different .NET versions and other small details but the functionality stays the same.
 
-# ERRORS Folder
+## ERRORS Folder
 
 In this folder there is a solution about an error that occured while working with multiple .NET versions on one machine.
 
 More errors will be added there (for now).
 
-## Project List
+# Project List
 
 The projects in this repository can be categorized by .NET Framework version. These are example templates for basic configuration / setup and can be used as a guide for more advanced projects. 
 
-# .NET 4.7.2
+## .NET 4.7.2
 
 1. FileUpload (with MSSQL, Razor Pages, MVC, File Upload)
 2. FileUploadwithModelandPreview (with MSSQL, Razor Pages, MVC, CRUD, 2xFile Upload, Preview JS function)
@@ -29,12 +29,12 @@ The projects in this repository can be categorized by .NET Framework version. Th
 13. WebApp6WebAPI2 (A weird API implementation - dont even remember what this is)
 14. WebFormSiteOracleDB (with Oracle DB, ASPX Pages)
 
-# .NET 5.0
+## .NET 5.0
 
 1. [MQTTnet.AspNetCore.AttributeRouting](https://github.com/Atlas-LiftTech/MQTTnet.AspNetCore.AttributeRouting)
 2. [Saunter_MQTTnet_AspNet5_AttributeRouting_ExampleProject](https://github.com/Rikj000/Saunter-MQTTnet-AspNet5-AttributeRouting-ExampleProject)
 
-# .NET 6.0
+## .NET 6.0
 
 1. GettingStartedWithIdentityServer4.ASPNETCore (The client uses JWT token to access the API)
 2. IDServer4MqttApiClientAspNetCore (same but 2 clients access the API - console and web)
@@ -43,23 +43,23 @@ The projects in this repository can be categorized by .NET Framework version. Th
 5. WebApp1CoreMVC (with MSSQL, Razor Pages, MVC, CRUD, Migrations)
 6. WebApp5CoreWebAPI (with MSSQL, Razor Pages, MVC, CRUD, Swagger Documentation)
 
-## Tutorials and sources
+# Tutorials and sources
 
 A collection of resources for basic features of web apps. Some do not include code.
 
-# Oracle
+## Oracle
 
 1. [Oracle DB v21](https://docs.oracle.com/en/database/oracle/oracle-database/21/tdddg/preface.html)
 
 2. [JDBC with Oracle DB](https://docs.oracle.com/en/database/oracle/oracle-database/21/tdpjd/using-java-with-oracle-database.html)
 
-# Oracle and ASP.NET
+## Oracle and ASP.NET
 
 1. [ASP.NET with Oracle DB](https://docs.oracle.com/cd/E11882_01/appdev.112/e10767/using_aspnt.htm#BABBFHIG)
 
 2. [Full tutorial](https://www.oracle.com/webfolder/technetwork/tutorials/obe/db/12c/r1/appdev/dotnet/aspnet1/BuildingASPNetApps.html#overview)
 
-# Microsoft Learn
+## Microsoft Learn
 
 1. [Part 7, add search to an ASP.NET Core MVC app | Microsoft Learn](https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/search?view=aspnetcore-7.0)
 
@@ -115,7 +115,7 @@ A collection of resources for basic features of web apps. Some do not include co
 
 27. [ASP.NET Web Forms](https://learn.microsoft.com/en-us/aspnet/web-forms/overview/getting-started/code-editing-in-web-forms-pages)
 
-# Compiler Errors
+## Compiler Errors
 
 1. [Compiler Error CS0118 | Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/csharp/misc/cs0118?f1url=%3FappId%3Droslyn%26k%3Dk(CS0118))
 
@@ -125,7 +125,7 @@ A collection of resources for basic features of web apps. Some do not include co
 
 4. [Compiler Warning (level 3) CS0168 | Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/csharp/misc/cs0168?f1url=%3FappId%3Droslyn%26k%3Dk(CS0168))
 
-# Videos
+## Videos
 
 1. [Part 54 - Repository Pattern - 1 - Adding Business Layer | Step by step Asp.net MVC Tutorial - YouTube](https://www.youtube.com/watch?v=mDL-1s5KEao)
 
@@ -133,19 +133,19 @@ A collection of resources for basic features of web apps. Some do not include co
 
 3. [Part 57 - Repository Pattern - 4- Adding DataAccessLayer and Entity framework - YouTube](https://www.youtube.com/watch?v=DPbnqaAwelM)
 
-# GitHub Repositories
+## GitHub Repositories
 
 1. [ASP.NET Katana](https://github.com/aspnet/AspNetKatana)
 
 2. [rafek/SimpleSocialAuth](https://github.com/rafek/SimpleSocialAuth)
 
-# About DotNetOpenAuth
+## About DotNetOpenAuth
 
 1. [Web Surgeon - OpenID Authentication with ASP.NET MVC3 , DotNetOpenAuth and OpenID-Selector](https://weblogs.asp.net/haithamkhedre/openid-authentication-with-asp-net-mvc3-dotnetopenauth-and-openid-selector)
 
 2. [DotNetOpenAuth by DotNetOpenAuth](http://dotnetopenauth.net/)
 
-# About Software Architectures
+## About Software Architectures
 
 1. [General - IBM](https://www.ibm.com/cloud/blog/four-architecture-choices-for-application-development)
 
@@ -159,7 +159,7 @@ A collection of resources for basic features of web apps. Some do not include co
 
 6. [SOLID: The First 5 Principles of Object Oriented Design | DigitalOcean](https://www.digitalocean.com/community/conceptual-articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design)
 
-# C# Corner
+## C# Corner
 
 1. [ASP NET MVC 5 Begginner's Guide - E-Book](https://www.c-sharpcorner.com/ebooks/Asp-Net-mvc-5-a-beginner-s-guide)
 
@@ -167,11 +167,11 @@ A collection of resources for basic features of web apps. Some do not include co
 
 3. [Using Identity In ASP.NET Core MVC Authentication](https://www.c-sharpcorner.com/article/using-identity-in-asp-net-core-mvc-authentication/)
 
-# DotNetTricks 
+## DotNetTricks 
 
 1. [Dependency Injection in ASP.NET MVC using Unity IoC Container](https://www.dotnettricks.com/learn/dependencyinjection/dependency-injection-in-aspnet-mvc-4-using-unity-ioc-container)
 
-# CodeProject
+## CodeProject
 
 1. [Using Unity Framework in ASP.NET MVC 5 - CodeProject](https://www.codeproject.com/articles/1163016/using-unity-framework-in-asp-net-mvc)
 
@@ -179,7 +179,7 @@ A collection of resources for basic features of web apps. Some do not include co
 
 3. [Using Unity Framework in ASP.NET MVC 5 - CodeProject](https://www.codeproject.com/articles/751897/asp-net-identity-with-webforms)
 
-# Other Tutorials
+## Other Tutorials
 
 1. [DOT NET TUTORIALS (good one)](https://dotnettutorials.net/course/asp-net-web-api/)
 
@@ -196,7 +196,7 @@ A collection of resources for basic features of web apps. Some do not include co
 7. [Entity Framework](https://www.tektutorialshub.com/entity-framework/ef-relationships/#:~:text=Relationships%20%26%20Navigation%20Properties%20in%20Entity%20Framework%201,between%20siblings%20is%20Many%20to%20Many%20relationships.%20)
 
 
-# Example JS Tables with Code
+## Example JS Tables with Code
 
 1. [Some Tables with code](https://onaircode.com/javascript-js-datatable-examples/#:~:text=18%2B%20JavaScript%20Datatable%20Design%20Code%20Examples%201%201.,Vuetify%20Responsive%20Datatable%20Code%20Snippet%20...%20%CE%A0%CE%B5%CF%81%CE%B9%CF%83%CF%83%CF%8C%CF%84%CE%B5%CF%81%CE%B1%20%CF%83%CF%84%CE%BF%CE%B9%CF%87%CE%B5%CE%AF%CE%B1)
 

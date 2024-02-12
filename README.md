@@ -2,11 +2,18 @@
 
 In this repository you will find many implementations of the same web apps. The differences are some implementation details, configuration details, different .NET versions and other small details but the functionality stays the same.
 
+## To Do List
+
+- [ ] make a project with Angular as SPA.
+- [ ] make a a project with ReactJS as Client to consume a ASP.NET WebAPI
+- [ ] try adding a project with 2FA or OAuth.
+- [ ] make a template project that uses MongoDB.
+- [ ] make another that uses PostgreSQL.
+- [ ] make a project that uses Blazor.
+
 ## ERRORS Folder
 
-In this folder there is a solution about an error that occured while working with multiple .NET versions on one machine.
-
-More errors will be added there (for now).
+In this folder there is a solution about an error that occured while working with multiple .NET versions on one machine. More errors will be added there (for now).
 
 # Project List
 

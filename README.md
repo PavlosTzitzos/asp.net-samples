@@ -1,5 +1,8 @@
 # ASP.NET Samples
 
+!!! This repository is no longer maintained. !!!
+
+
 In this repository you will find many implementations of the same web apps. The differences are some implementation details, configuration details, different .NET versions and other small details but the functionality stays the same.
 
 ## To Do List
